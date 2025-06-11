@@ -2,3 +2,4 @@ node_modules
 dist
 .observablehq/cache
 src/data/vis
+unused

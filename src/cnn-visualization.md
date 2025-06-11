@@ -17,7 +17,6 @@ This interactive visualization shows a Convolutional Neural Network (CNN) archit
 
 
 ```js
-// CNN blocks configuration
 const blocks = [
   {x: 50,  w: 10, h: 80, d: 40, name: "Conv1", color: "#D3D3D3", id:"conv1"},
   {x: 125, w: 10, h: 80, d: 40, name: "Layer1 Block0 Conv1", color: "#ADD8E6", id:"layer1_0_conv1"},
@@ -4050,7 +4049,7 @@ function createImageDisplay() {
           console.warn(`Failed to load image: ${imageKey}`, error);
           imgElem.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0iI2YwZjBmMCIvPjx0ZXh0IHg9IjEyOCIgeT0iMTI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2NjYiPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4=";
           captionElem.innerHTML = `Layer: <b>${selectedBlockId}</b>, Feature Map: <b>${index}</b> (not found)`;
-        }git
+        }
       } else {
         imgElem.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0iI2YwZjBmMCIvPjx0ZXh0IHg9IjEyOCIgeT0iMTI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2NjYiPkZlYXR1cmUgbWFwIG5vdCBhdmFpbGFibGU8L3RleHQ+PC9zdmc+";
         captionElem.innerHTML = `Layer: <b>${selectedBlockId}</b>, Feature Map: <b>${index}</b> (not available)`;
@@ -4094,12 +4093,10 @@ function createImageDisplay() {
     await updateImage();
   };
 
-  // Initial load
   updateImage();
   return container;
 }
 
-// Create CNN diagram
 function createCNNDiagram() {
   const svg = d3.create("svg")
       .attr("viewBox", "0 0 1200 400")
@@ -4153,7 +4150,6 @@ function createCNNDiagram() {
       .attr("d", "M0,-5L10,0L0,5")
       .attr("fill", "#F5F5DC");
 
-  // Sequential connections
   for (let i = 0; i < blocks.length - 1; i++) {
     const from = blocks[i];
     const to = blocks[i + 1];
@@ -4172,7 +4168,6 @@ function createCNNDiagram() {
       .attr("marker-end", "url(#arrow)");
   }
 
-  // Residual connections
   residualConnections.forEach(({ from, to }) => {
     const fromBlock = blocks.find(b => b.id === from);
     const toBlock = blocks.find(b => b.id === to);
@@ -4200,7 +4195,6 @@ function createCNNDiagram() {
       .attr("marker-end", "url(#arrow)");
   });
 
-  // Labels on hover
   const labels = blockGroups.append("text")
       .text(d => d.name)
       .attr("x", (d) => d.x + d.w * 2.5)
@@ -4221,7 +4215,6 @@ function createCNNDiagram() {
       d3.select(this).select("text").style("visibility", "hidden");
     });
 
-  // Legend
   const legend = svg.append("g")
     .attr("transform", "translate(1100, 5)");
 
@@ -4248,7 +4241,6 @@ function createCNNDiagram() {
   return svg.node();
 }
 
-// Initialize components
 const imageDisplay = createImageDisplay();
 
 function updateDiagram() {
@@ -4258,7 +4250,6 @@ function updateDiagram() {
   diagramContainer.appendChild(diagram);
 }
 
-// Initial render
 updateDiagram();
 document.getElementById("image-display-container").appendChild(imageDisplay);
 ```

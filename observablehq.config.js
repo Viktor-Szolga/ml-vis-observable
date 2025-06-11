@@ -1,4 +1,3 @@
-// observablehq.config.js
 export default {
   title: "CNN Visualization",
   root: "src",
