@@ -3,7 +3,7 @@
 An interactive visualization of a Convolutional Neural Network (CNN) showing the architecture and feature map activations.
 
 Download the data here:
-https://drive.google.com/file/d/1gjshKIXA_LjG-_n3ffL4kAFV_UX5Bop2/view
+https://drive.google.com/file/d/1b1N_rffXnJjxgHeLOEyp_Umz4MALgMLz/view?usp=sharing
 
 ## Setup
 
@@ -16,13 +16,13 @@ https://drive.google.com/file/d/1gjshKIXA_LjG-_n3ffL4kAFV_UX5Bop2/view
    ```
    src/data/
    ├── vis/
-   │   ├── original.png
-   │   ├── conv1/
-   │   │   ├── feature_000.png
-   │   │   ├── feature_001.png
-   │   │   └── ...
-   │   ├── layer1_0_conv1/
-   │   │   └── feature_*.png
+   │   ├── labrador/
+   │   │   ├── layer1_0_conv1/
+   │   │   ├───── feature_000.png
+   │   │   ├───── feature_001.png
+   │   |   └───── ...
+   │   ├── flamingo/
+   │   ├── pelican/
    │   └── ...
    ```
 
