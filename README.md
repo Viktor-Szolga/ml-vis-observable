@@ -2,6 +2,9 @@
 
 An interactive visualization of a Convolutional Neural Network (CNN) showing the architecture and feature map activations.
 
+Download the data here:
+https://drive.google.com/file/d/1gjshKIXA_LjG-_n3ffL4kAFV_UX5Bop2/view
+
 ## Setup
 
 1. Install dependencies:
