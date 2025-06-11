@@ -1,12 +1,17 @@
 import os
 import pyperclip
 
-sampleImages = 'original: FileAttachment("data/vis/original.png"),'
+folder = "src\\data\\vis"
+clip = ""
 
-for folder in os.listdir("src\\data\\vis"):
-    if folder != "original.png":
-        for i, file in enumerate(os.listdir(os.path.join("src\\data\\vis", folder))):
-            sampleImages += f'{folder}_{i}: FileAttachment("data/vis/{folder}/feature_{i:03d}.png"),\n'
-pyperclip.copy(sampleImages)
+for animal in os.listdir(folder):
+    if animal == "original.png" or "_" in animal or animal == "conv1":
+        continue
+    clip += f'{animal}: FileAttachment("data/vis/{animal}/{animal}.png"),\n'
+    for dir in os.listdir(os.path.join(folder, animal)):
+        if dir != f"{animal}.png":
+            for i, file in enumerate(os.listdir(os.path.join("src\\data\\vis", animal, dir))):
+                clip += f'{animal}_{dir}_{i}: FileAttachment("data/vis/{animal}/{dir}/feature_{i:03d}.png"),\n'
+pyperclip.copy(clip)
 
 print("Done")
