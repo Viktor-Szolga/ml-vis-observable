@@ -1825,12 +1825,12 @@ Place your extracted visualization data in the `src/data/` directory with the fo
 ```
 src/data/
 ├── vis/
-│   ├── original.png
-│   ├── conv1/
-│   │   ├── feature_000.png
-│   │   ├── feature_001.png
-│   │   └── ...
-│   ├── layer1_0_conv1/
-│   │   └── feature_*.png
+│   ├── labrador/
+│   │   ├── layer1_0_conv1/
+│   │   ├───── feature_000.png
+│   │   ├───── feature_001.png
+│   |   └───── ...
+│   ├── flamingo/
+│   ├── pelican/
 │   └── ...
 ```
