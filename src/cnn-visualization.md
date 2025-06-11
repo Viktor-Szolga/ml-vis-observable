@@ -10,10 +10,10 @@ This interactive visualization shows a Convolutional Neural Network (CNN) archit
 4. **Hover over blocks** to see their layer names
 
 <div class="cnn-diagram-container">
-  <div id="cnn-diagram"></div>
+  <div id="cnn-diagram" style="margin-bottom: 0px; padding-bottom: 0px"></div>
 </div>
 
-<div id="image-display-container" style="display: flex; justify-content: center; align-items: center;"></div>
+<div id="image-display-container" style="display: flex; justify-content: center; align-items: center; height: 300px; margin-top: 0px; padding-top: 0px"></div>
 
 
 ```js
@@ -73,9 +73,60 @@ function darkenColor(hex, factor) {
   return "#" + [rD,gD,bD].map(x => x.toString(16).padStart(2, "0")).join("");
 }
 
+function createBlackBox() {
+  const blackBox = document.createElement("div");
+  blackBox.id = "black-box";
+  blackBox.style.cssText = `
+    position: absolute;
+    top: 22%;
+    left: 0%;
+    width: 900px;
+    height: 500px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 50%, #1a1a1a 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 3px solid #333;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.8), inset 0 0 30px rgba(255,255,255,0.1);
+  `;
+  
+  blackBox.innerHTML = `
+    <div style="text-align: center; color: #fff; font-family: 'Courier New', monospace;">
+      <div style="font-size: 48px; margin-bottom: 20px; text-shadow: 0 0 20px #fff;">ResNet18</div>
+      <h2 style="margin: 0 0 10px 0; font-size: 32px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">BLACK BOX</h2>
+      <div style="font-size: 14px; opacity: 0.6; animation: pulse 2s infinite;">
+        Click to reveal the inner workings
+      </div>
+    </div>
+    <style>
+      @keyframes pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+    </style>
+  `;
+  
+  blackBox.onclick = () => {
+    blackBoxRevealed = true;
+    blackBox.style.transform = "scale(0) rotate(180deg)";
+    blackBox.style.opacity = "0";
+    setTimeout(() => {
+      blackBox.style.display = "none";
+    }, 800);
+  };
+  
+  return blackBox;
+}
+
 // State management
 let selectedBlockId = null;
 let featureMapIndex = 0;
+let blackBoxRevealed = false;
 
 // Create image display
 function createImageDisplay() {
@@ -4094,6 +4145,8 @@ function createImageDisplay() {
   };
 
   updateImage();
+  const blackBox = createBlackBox();
+  container.appendChild(blackBox);
   return container;
 }
 
@@ -4253,7 +4306,6 @@ function updateDiagram() {
 updateDiagram();
 document.getElementById("image-display-container").appendChild(imageDisplay);
 ```
-
 ## Architecture Overview
 
 The CNN consists of the following components:

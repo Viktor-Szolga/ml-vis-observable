@@ -9,5 +9,8 @@
   },
   "devDependencies": {
     "@observablehq/framework": "latest"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^4.22.0"
   }
 }
