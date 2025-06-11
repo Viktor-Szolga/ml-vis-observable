@@ -12,9 +12,21 @@ https://drive.google.com/file/d/1gjshKIXA_LjG-_n3ffL4kAFV_UX5Bop2/view
    npm install
    ```
 
-2. Extract your CNN visualization data (zip file) to the `src/data/` directory
+2. Place your extracted visualization data in the `src/data/` directory with the following structure:
+   ```
+   src/data/
+   ├── vis/
+   │   ├── original.png
+   │   ├── conv1/
+   │   │   ├── feature_000.png
+   │   │   ├── feature_001.png
+   │   │   └── ...
+   │   ├── layer1_0_conv1/
+   │   │   └── feature_*.png
+   │   └── ...
+   ```
 
-3. Run the development server:
+4. Run the development server:
    ```
    npm run dev
    ```
