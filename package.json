@@ -1,0 +1,14 @@
+
+{
+  "name": "cnn-visualization",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "observable preview",
+    "build": "observable build",
+    "deploy": "observable deploy"
+  },
+  "devDependencies": {
+    "@observablehq/framework": "latest"
+  }
+}
